@@ -1,57 +1,83 @@
 #include <stdio.h>
 #include <stdlib.h>
-typedef struct anisole
+
+typedef struct binaryTree
 {
     int value;
-    struct BT *left;
-    struct BT *right;
+    struct binaryTree *left;
+    struct binaryTree *right;
 } bt;
 
-bt *newNode(int val)
+bt *createBT(int val)
 {
-    bt *newTemp = (bt *)malloc(sizeof(bt));
-
-    newTemp->value = val;
-    newTemp->left = NULL;
-    newTemp->right = NULL;
-    return newTemp;
-}
-
-bt *top = NULL;
-int main()
-{
-    int tempVar;
-    printf("Root Node Value :-) ");
-    scanf("%d", &tempVar);
-    bt *temp = newNode(tempVar);
-    temp->value = tempVar;
+    bt *temp = (bt *)malloc(sizeof(bt));
+    temp->value = val;
     temp->left = NULL;
     temp->right = NULL;
-    top = temp;
+    return temp;
+}
 
-    while (0 == 0)
+void preOrder(bt *root)
+{
+    if (root != NULL)
     {
-        printf("\n\n-------------------------------\n\n");
-        printf("Choose One Operation --------->");
-        printf("\n\t1.) Root Node value");
-        printf("\n\t69.) exit");
-
-        printf("\n\nEnter Your Choice :-)");
-        scanf("%d", &tempVar);
-        switch (tempVar)
-        {
-        case 1:
-            printf("\n\n\nRoot Node Value :-) %d\n\n", top->value);
-            break;
-        case 69:
-            goto end;
-            break;
-        default:
-            printf("\n----------[!]Invalid Choice -------------");
-            break;
-        }
+        printf("%d ", root->value);
+        preOrder(root->left);
+        preOrder(root->right);
     }
-end:
-    printf("\n\nExit ...");
-    return 69;
+}
+
+void postOrder(bt *root)
+{
+    if (root != NULL)
+    {
+        postOrder(root->left);
+        postOrder(root->right);
+        printf("%d ", root->value);
+    }
+}
+
+void inOrder(bt *root)
+{
+    if (root != NULL)
+    {
+        inOrder(root->left);
+        printf("%d ", root->value);
+        inOrder(root->right);
+    }
+}
+
+int main()
+{
+    // printf("anisole");
+    bt *ap = createBT(4);
+    bt *ap1 = createBT(34);
+    bt *ap2 = createBT(23);
+    bt *ap3 = createBT(234);
+    bt *ap4 = createBT(423);
+    bt *ap5 = createBT(1);
+
+    ap->left = ap1;
+    ap->right = ap2;
+    ap1->left = ap3;
+    ap1->right = ap4;
+    ap2->right = ap5;
+
+    /*
+        4
+       / \
+     34  23
+    /  \   \
+   234 423 1
+
+    */
+    printf("preOrder = ");
+    preOrder(ap);
+    printf("\n");
+    printf("inOrder = ");
+    inOrder(ap);
+    printf("\n");
+    printf("postOrder = ");
+    postOrder(ap);
+    return 0;
 }
