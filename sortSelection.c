@@ -10,6 +10,26 @@ void traverse(int arr[], int len)
     }
 }
 
+/*
+
+if array = [23,2,69,34]
+
+then selection sort step will be
+
+  we take 2 pointers
+    1. for value
+    2. for comparision
+
+    [23,2,69,34]  // if comparision pointer value is smaller than value pointer
+     ^  ^
+
+    then comparision pointer take one step further
+    [2, 23, 69, 34]
+     ^  ^
+    [2, 23, 69, 34]
+     ^       ^
+*/
+
 void selectionSort(int arr[], int len)
 {
     int i, j;
@@ -18,7 +38,7 @@ void selectionSort(int arr[], int len)
     {
         for (j = i + 1; j < len; j++)
         {
-            if (arr[i] > arr[j])
+            if (arr[i] > arr[j]) // swap elements if array have any smaller element than previous one
             {
                 int temp = arr[i];
                 arr[i] = arr[j];
