@@ -134,14 +134,14 @@ void postOrder(bt *temp)
     {
 
         // printf("%d ", temp->value);
-        arr[len++] = temp->value;
-        if (temp->left != NULL)
-        {
+        arr[len++] = temp->value;   // storing into array to reverse the result 
+        if (temp->left != NULL) 
+        {                           // check Left Node
             llPush(temp->left);
         }
 
         if (temp->right != NULL)
-        {
+        {                           // check Right Node
             temp = temp->right;
         }
         else
@@ -151,7 +151,7 @@ void postOrder(bt *temp)
     }
 
     while (len > 0)
-    {
+    {                               // final result
         printf("%d ", arr[--len]);
     }
 }
