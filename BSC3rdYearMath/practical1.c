@@ -1,6 +1,4 @@
-
 #include <stdio.h>
-#include "../clrscrGCC.h"
 #define maxDiff 5
 
 /*
@@ -21,7 +19,7 @@ int main()
         den = 1.0,
         x, y, h, u;
     int i = 0, j = 0, n;
-    clrscr();
+
 
     /*
 
